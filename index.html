@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <title>Lista de Contatos</title>
+</head>
+<body>
+    <input type="text" id="search" placeholder="Buscar por nome...">
+    <select id="filterUF">
+        <option value="">Filtrar por UF</option>
+    </select>
+    <div id="contact-list"></div>
+
+    <template id="contact-template">
+        <style>
+            :host {
+                display: block;
+                border: 1px solid #ddd;
+                padding: 10px;
+                margin: 5px;
+                border-radius: 5px;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .details { display: none; }
+        </style>
+        <div>
+            <h3><slot name="name"></slot></h3>
+            <p><slot name="phone"></slot></p>
+            <button id="toggle">Mostrar Detalhes</button>
+            <div class="details">
+                <p><slot name="address"></slot> - <slot name="city"></slot> - <slot name="uf"></slot></p>
+            </div>
+        </div>
+    </template>
+</body>
+</html>
